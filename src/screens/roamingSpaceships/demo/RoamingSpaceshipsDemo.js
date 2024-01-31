@@ -118,10 +118,19 @@ function RoamingSpaceshipsDemo() {
 			vertexShader: config.shaders.vertex,
 			fragmentShader: config.shaders.fragment,
 			wireframe: false,
-			...(config.fog && {
-				fog: true,
-				uniforms: THREE.UniformsUtils.merge([THREE.UniformsLib['fog']]),
-			}),
+			/*...(config.fog && {
+        fog: true,
+        uniforms: THREE.UniformsUtils.merge([
+          THREE.UniformsLib['fog'],
+          THREE.UniformsLib['lights'],
+        ]),
+      }),*/
+			fog: !!config.fog,
+			uniforms: THREE.UniformsUtils.merge([
+				config.fog && THREE.UniformsLib['fog'],
+				THREE.UniformsLib['lights'],
+			]),
+			lights: true,
 		})
 
 		const stageMesh = new THREE.Mesh(stageGeometry, stageMaterial)
@@ -164,7 +173,7 @@ function RoamingSpaceshipsDemo() {
 	}, [activeCamera])
 
 	return (
-		<div style={{width: '100vw', height: '100vh', overflow: 'hidden'}}>
+		<div style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
 			<div className={classes.actions}>
 				<section>
 					<h3>DisplayMode</h3>
