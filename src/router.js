@@ -4,6 +4,7 @@ import RoamingSpaceshipsDemo from './screens/roamingSpaceships/demo/RoamingSpace
 import TerrainGenerator from './screens/terrainGenerator/TerrainGenerator'
 import Home from './screens/home/Home'
 import Navbar from './web-components/navbar/Navbar'
+import ToonShaderDemo from './screens/toonShaderDemo/ToonShaderDemo'
 
 const router = createBrowserRouter([
 	{
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
 		],
 	},
 	{ path: 'roaming-spaceships/demo', element: <RoamingSpaceshipsDemo /> },
+	{
+		path: 'toon-shader',
+		element: <ToonShaderDemo />,
+	},
 ])
 
 export default router
