@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/game-portfolio/static/css/main.e86dd550.css",
+    "main.js": "/game-portfolio/static/js/main.dc49692e.js",
+    "static/js/529.a37ae4e5.chunk.js": "/game-portfolio/static/js/529.a37ae4e5.chunk.js",
+    "static/media/terrain_render.png": "/game-portfolio/static/media/terrain_render.28d4b63487eeb88d3696.png",
+    "static/media/terrain_generator_material.png": "/game-portfolio/static/media/terrain_generator_material.41bf8cec8dfe05efcc69.png",
+    "static/media/terrain_map.png": "/game-portfolio/static/media/terrain_map.f4733d06d1b8eea632bf.png",
+    "static/media/roaming_ships.png": "/game-portfolio/static/media/roaming_ships.d10f67caebccf29c4fe2.png",
+    "index.html": "/game-portfolio/index.html",
+    "main.e86dd550.css.map": "/game-portfolio/static/css/main.e86dd550.css.map",
+    "main.dc49692e.js.map": "/game-portfolio/static/js/main.dc49692e.js.map",
+    "529.a37ae4e5.chunk.js.map": "/game-portfolio/static/js/529.a37ae4e5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e86dd550.css",
+    "static/js/main.dc49692e.js"
+  ]
+}
