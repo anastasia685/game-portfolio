@@ -1,19 +1,38 @@
 {
   "files": {
-    "main.css": "/game-portfolio/static/css/main.e86dd550.css",
-    "main.js": "/game-portfolio/static/js/main.f9a682b8.js",
+    "main.css": "/game-portfolio/static/css/main.d6169541.css",
+    "main.js": "/game-portfolio/static/js/main.d88294e3.js",
     "static/js/529.a37ae4e5.chunk.js": "/game-portfolio/static/js/529.a37ae4e5.chunk.js",
+    "static/media/fluidsim_timelapse.mp4": "/game-portfolio/static/media/fluidsim_timelapse.86c9b0fdc8c68f7eb246.mp4",
+    "static/media/roaming_spaceships_playthrough.mp4": "/game-portfolio/static/media/roaming_spaceships_playthrough.f6e97ae098b0940e9005.mp4",
+    "static/media/sockets_playthrough.mp4": "/game-portfolio/static/media/sockets_playthrough.df5a9dbc3526d63cf624.mp4",
+    "static/media/selective_sdf_timelapse.mp4": "/game-portfolio/static/media/selective_sdf_timelapse.cbb431a18683926708b7.mp4",
     "static/media/terrain_render.png": "/game-portfolio/static/media/terrain_render.28d4b63487eeb88d3696.png",
+    "static/media/waves_timelapse.mp4": "/game-portfolio/static/media/waves_timelapse.64c26e8bd637d9474d65.mp4",
+    "static/media/fishing_minigame1.mp4": "/game-portfolio/static/media/fishing_minigame1.07e5dd9cfb47ef647dc7.mp4",
+    "static/media/fishing_minigame2.mp4": "/game-portfolio/static/media/fishing_minigame2.f28423a1afb8bc69d4f2.mp4",
+    "static/media/fishing_snap1.png": "/game-portfolio/static/media/fishing_snap1.4b32f006b536535cf5b3.png",
+    "static/media/fish_everywhere.png": "/game-portfolio/static/media/fish_everywhere.591575ffded4c531e312.png",
+    "static/media/waves_snap2.png": "/game-portfolio/static/media/waves_snap2.ceaccaf9082eefa7f6f3.png",
+    "static/media/waves_snap1.png": "/game-portfolio/static/media/waves_snap1.4aac86f73a4bfbee8fb5.png",
+    "static/media/fluidsim_snap2.png": "/game-portfolio/static/media/fluidsim_snap2.73f00a28290ede052b08.png",
+    "static/media/fluidsim_snap1.png": "/game-portfolio/static/media/fluidsim_snap1.bc1557cefd6b6803df66.png",
+    "static/media/waves.png": "/game-portfolio/static/media/waves.b2bc261036e2f27ceddf.png",
+    "static/media/clouds.png": "/game-portfolio/static/media/clouds.3d1832dee017b4d4014b.png",
+    "static/media/film_portrait.JPG": "/game-portfolio/static/media/film_portrait.95ed2fde192243b131fc.JPG",
     "static/media/terrain_generator_material.png": "/game-portfolio/static/media/terrain_generator_material.41bf8cec8dfe05efcc69.png",
+    "static/media/selective_sdf_snap2.png": "/game-portfolio/static/media/selective_sdf_snap2.62e5ecdd49d91a6f79f0.png",
+    "static/media/selective_sdf_snap1.png": "/game-portfolio/static/media/selective_sdf_snap1.e2d11f3c6697e0a8fb1e.png",
     "static/media/terrain_map.png": "/game-portfolio/static/media/terrain_map.f4733d06d1b8eea632bf.png",
+    "static/media/sdf_preview.png": "/game-portfolio/static/media/sdf_preview.f28f797c5aaad913a884.png",
     "static/media/roaming_ships.png": "/game-portfolio/static/media/roaming_ships.d10f67caebccf29c4fe2.png",
     "index.html": "/game-portfolio/index.html",
-    "main.e86dd550.css.map": "/game-portfolio/static/css/main.e86dd550.css.map",
-    "main.f9a682b8.js.map": "/game-portfolio/static/js/main.f9a682b8.js.map",
+    "main.d6169541.css.map": "/game-portfolio/static/css/main.d6169541.css.map",
+    "main.d88294e3.js.map": "/game-portfolio/static/js/main.d88294e3.js.map",
     "529.a37ae4e5.chunk.js.map": "/game-portfolio/static/js/529.a37ae4e5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e86dd550.css",
-    "static/js/main.f9a682b8.js"
+    "static/css/main.d6169541.css",
+    "static/js/main.d88294e3.js"
   ]
 }
