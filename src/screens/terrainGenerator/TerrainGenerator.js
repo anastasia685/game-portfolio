@@ -4,65 +4,34 @@ import MaterialGraph from '../../assets/images/terrain_generator_material.png'
 import TerrainMap from '../../assets/images/terrain_map.png'
 import TerrainRender from '../../assets/images/terrain_render.png'
 
-import classes from './TerrainGenerator.module.scss'
+import classes from '../ProjectScreen.module.scss'
+import terrainClasses from './TerrainGenerator.module.scss'
 
 const TerrainGenerator = () => {
 	return (
 		<Container className={classes.content}>
 			<h1>Terrain Generator</h1>
 			<p>
-				The Terrain Generator project aims to transform a given image,
-				serving as a crude layout of the landscape, into a dynamic
-				heightmap. It separates the image by color and uses the results as
-				masks for applying different transformations representing landscape
-				features such as mountains, highlands, and rivers. As a result, it
-				provides a quick and easy way to lay down the groundwork for a more
-				complex and detailed landscape generation. The tool ended up being
-				pretty versatile, as it primarily relies on different noise
-				algorithms to displace flat geometry, and by adjusting the tolerance
-				of color masks, it can use images created in different styles and
-				mediums. In the example below, I used Microsoft Paint to create a
-				simple map, but a hand-painted scanned image would work just as
-				well.
+				This was an early project I worked on out of personal interest in procedural generation techniques.
+				The goal was to convert simple painted images into 3D terrain heightmaps.
+				The core idea was to take rough color-based sketches (even something as basic as an MS Paint drawing)
+				and automatically transform them into landscape features using various noise algorithms.
+				I built the system primarily in Adobe Substance Designer with Blender integration,
+				resulting in a simple and straightforward workflow.
 			</p>
 			<p>
-				In practice, all this was done by creating a custom material in
-				Adobe Substance Designer that accepts the image as an input,
-				separates it into different sections and applies different
-				algorithms like Perlin and Voronoi noises to generate landscape
-				geometry. The effects are then scaled according to mask size (a
-				smaller mountain range would not generally be as tall as a larger
-				spanning one, e.g.), expanded and blurred for better blending and
-				added together.
+				The technical approach involved color separation with adjustable tolerance to create masks for
+				different landscape features like mountains, highlands, and rivers.
+				Each mask then drove specific procedural transformations using algorithms like Perlin and Voronoi noise,
+				with effects scaled based on the mask size so larger mountain ranges would generate proportionally higher peaks.
+				The system handled blending and expansion for seamless transitions between different terrain types.
 			</p>
-			<p>
-				As for the practical implementation example, I imported the
-				generated map into Blender3D software and used it as a base to
-				displace a simple plane geometry. Additionally, I created a shader
-				node group, which would again generate different color masks from
-				the original image and apply specific detailed materials, to further
-				enhance the overall look of the end result.
-			</p>
-			<p>
-				I ended up disregarding this idea and opted instead to go back to
-				Substance Designer. In this revised strategy I exported color masks
-				that were generated during material creation process directly
-				alongside the heightmap. This adjustment allowed from more precise
-				results, kept the main work logic concentrated in one place, and the
-				workflow proved to be more straightforward and efficient within
-				Substance Designer.
-			</p>
-			<p>
-				Back in Blender3D material shader, I imported these newly generated
-				masking textures and used them to combine different open-source
-				materials in their respective positions and here is the resulting
-				render next to the original map made in Microsoft Paint.
-			</p>
-			<div className={classes.imagesWrapper}>
-				<div className={classes.imageContainer}>
+
+			<div className={terrainClasses.imagesWrapper}>
+				<div className={terrainClasses.imageContainer}>
 					<img src={TerrainMap} alt={'painted-map'} />
 				</div>
-				<div className={classes.imageContainer}>
+				<div className={terrainClasses.imageContainer}>
 					<img src={TerrainRender} />
 				</div>
 			</div>
@@ -88,7 +57,7 @@ const TerrainGenerator = () => {
 				showcasing the end results) can be downloaded for a more
 				comprehensive review.
 			</p>
-			<div className={classes.imageContainer}>
+			<div className={terrainClasses.imageContainer}>
 				<img src={MaterialGraph} alt={'MaterialGraph'} />
 			</div>
 		</Container>

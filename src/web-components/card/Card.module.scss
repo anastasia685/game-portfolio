@@ -1,18 +1,18 @@
 .title {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-family: 'futura-pt', sans-serif;
   font-weight: 300;
   font-style: normal;
   color: #111;
   text-decoration: none;
   text-transform: uppercase;
-  margin: 2.5rem 0;
+  margin: 0 0 0.5rem 0;
 }
 
 .imageWrapper {
   position: relative;
-  width: 70%;
-  padding-top: 70%;
+  width: 72%;
+  padding-top: 72%;
 
   > .imageContainer {
     position: absolute;
@@ -26,7 +26,8 @@
 
 .links {
   display: flex;
-  flex-direction: column;
+  gap: 1rem;
+  flex-wrap: nowrap;
   margin-top: 0.5rem;
 
   > a {

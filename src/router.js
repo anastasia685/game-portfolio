@@ -1,4 +1,9 @@
 import { createBrowserRouter, createHashRouter, NavLink, Outlet } from 'react-router-dom'
+import SelectiveSDF from './screens/selectiveSDF/SelectiveSDF'
+import FluidSim from './screens/fluidSim/FluidSim'
+import Dx11Demo from './screens/dx11Demo/Dx11Demo'
+import FishEverywhere from './screens/fishEverywhere/FishEverywhere'
+import Sockets from './screens/sockets/Sockets'
 import RoamingSpaceships from './screens/roamingSpaceships/RoamingSpaceships'
 import RoamingSpaceshipsDemo from './screens/roamingSpaceships/demo/RoamingSpaceshipsDemo'
 import TerrainGenerator from './screens/terrainGenerator/TerrainGenerator'
@@ -18,6 +23,26 @@ const router = createHashRouter([
 		children: [
 			{ path: '', element: <Home /> },
 			{
+				path: 'selective-sdf',
+				element: <SelectiveSDF />,
+			},
+			{
+				path: 'volumetric-fluid-sim',
+				element: <FluidSim />,
+			},
+			{
+				path: 'dx11-demo',
+				element: <Dx11Demo />,
+			},
+			{
+				path: 'fish-everywhere',
+				element: <FishEverywhere />,
+			},
+			{
+				path: 'socket-demo',
+				element: <Sockets />,
+			},
+			{
 				path: 'roaming-spaceships',
 				children: [{ path: '', element: <RoamingSpaceships /> }],
 			},
@@ -29,7 +54,7 @@ const router = createHashRouter([
 	},
 	{ path: 'roaming-spaceships/demo', element: <RoamingSpaceshipsDemo /> },
 	{
-		path: 'toon-shader',
+		path: 'toon-shader/demo',
 		element: <ToonShaderDemo />,
 	},
 ])

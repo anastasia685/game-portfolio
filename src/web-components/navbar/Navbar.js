@@ -6,15 +6,15 @@ import { useEffect } from 'react'
 const Navbar = () => {
 	const { pathname } = useLocation()
 	useEffect(() => {
-		window.scrollTo({ top: 0, behavior: 'smooth' })
+		window.scrollTo({ top: 0, behavior: 'instant' })
 	}, [pathname])
 	return (
 		<Container>
 			<header className={classes.header}>
 				<NavLink to='' className={classes.title}>
-					Anastasia Iosebadze - Game Development Portfolio
+					Anastasia Iosebadze - Portfolio
 				</NavLink>
-				<nav>
+				{/*<nav>
 					<NavLink
 						to='roaming-spaceships'
 						className={({ isActive }) =>
@@ -31,7 +31,7 @@ const Navbar = () => {
 					>
 						Terrain Generator
 					</NavLink>
-				</nav>
+				</nav>*/}
 			</header>
 		</Container>
 	)
