@@ -11,6 +11,10 @@ import SocketsImage from '../../assets/images/shooting_squares.png'
 import RoamingSpaceshipsImage from '../../assets/images/roaming_ships.png'
 import TerrainGeneratorImage from '../../assets/images/terrain_map.png'
 
+import LiderbetImage from '../../assets/images/work/liderbet.png'
+import TsignebisTaroImage from '../../assets/images/work/tsignebis_taro.jpg'
+import CoinmaniaImage from '../../assets/images/work/coinmania.png'
+
 import GithubIcon from '../../assets/icons/github.png'
 import LinkedInIcon from '../../assets/icons/linkedin.png'
 
@@ -183,8 +187,58 @@ const Home = () => {
 				</Link>
 			</section>
 
-			{/*<h1>Previous Experience</h1>
-			<h1>Side Quests</h1>*/}
+			<h1>Previous Experience</h1>
+			<p style={{marginBottom: '3rem'}}>I've been programming professionally since my senior year of high school and
+				have accumulated nearly 8 years of experience with various tech and tech-related solutions.
+			</p>
+			<div className={classes.experienceContainer}>
+				<div>
+					<img src={LiderbetImage} alt={'liderbet_logo'}/>
+					<p>
+						<a href={'https://www.lider-bet.com/'} target={'_blank'}>Leader-bet.com</a> is Georgia's leading sports betting platform, operating land-based totalizators
+						and slot clubs across all major cities and regions, ranking first in volume among Georgian totalizators.
+						As a senior web application engineer, I focus on system architecture and large-scale data management,
+						developing reusable component libraries, designing efficient API structures,
+						and building real-time data systems that handle the rapid updates essential to live sports betting operations.
+						<br/><br/>
+						This role has been particularly significant in developing my architectural thinking and understanding of scalable systems design.
+						The complexity of managing high-volume, low-latency data streams while mentoring junior developers has
+						deepened my expertise in both technical leadership and building robust, enterprise-level applications.
+					</p>
+				</div>
+				<div>
+					<img src={TsignebisTaroImage} alt={'tsignebis_taro_logo'}/>
+					<p>
+						<a href={'https://www.linkedin.com/company/wignebistaro/about/'} target={'_blank'}>Tsignebis Taro (translates to "Bookcase")</a> is
+						a Georgian educational entertainment company best known for
+						their literature competition TV show that has been inspiring young readers since 2015.
+						During my time there as a software developer, I created multiple project-specific websites and
+						developed a cross-platform mobile app to support their various educational initiatives.
+						<br/><br/>
+						This role was particularly meaningful for several reasons. First off, it was my first experience leading all
+						technical decisions and taking full ownership of the development process. Additionally,
+						having previously been a semi-finalist on their show, I was deeply connected to company's
+						mission - the weekly gatherings for episode filming sessions had given me a community of fellow
+						literature enthusiasts during my younger years when reading was my primary passion.
+						Being able to give back to a project that had such a positive impact on my life was incredibly inspiring,
+						and I eventually expanded my involvement to join their main creative team as well.
+					</p>
+				</div>
+				<div>
+					<img src={CoinmaniaImage} alt={'coinmaina_logo'}/>
+					<p>
+						<a href={'https://coinmania.exchange'} target={'_blank'}>Coinmania.ge</a> is one of
+						Georgia's first cryptocurrency exchange platforms. As a software developer,
+						I focused on implementing new cryptocurrency transfer systems,
+						integrating local bank transaction processing, and maintaining the internal trading infrastructure.
+						<br/><br/>
+						This was my first "real" job in the industry, so it was, in many ways, a formative experience.
+						Especially considering how much additional research it involved into blockchain technologies,
+						payment systems, etc.
+					</p>
+				</div>
+			</div>
+			{/*<h1>Side Quests</h1>*/}
 		</Container>
 	)
 }

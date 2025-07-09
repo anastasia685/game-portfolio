@@ -30,6 +30,10 @@ const SelectiveSDF = () => {
 				By selectively applying SDF operations only in localized regions
 				where they provide meaningful visual contribution, the system seeks to
 				maintain the benefits of both techniques while mitigating their respective drawbacks.
+				It is built using DirectX 12 and DXR, with sphere tracing used for evaluating SDFs.
+				Development process is currently focused on exploring custom acceleration structures to
+				quickly narrow down the blend zone and relevant objects in the vicinity,
+				and improve or even replace sphere tracing.
 			</p>
 			<p>
 				This work is currently in progress as part of my master's degree program,
