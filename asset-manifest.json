@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/game-portfolio/static/css/main.d6169541.css",
-    "main.js": "/game-portfolio/static/js/main.d88294e3.js",
+    "main.css": "/game-portfolio/static/css/main.1cb30f73.css",
+    "main.js": "/game-portfolio/static/js/main.f64d9137.js",
     "static/js/529.a37ae4e5.chunk.js": "/game-portfolio/static/js/529.a37ae4e5.chunk.js",
     "static/media/fluidsim_timelapse.mp4": "/game-portfolio/static/media/fluidsim_timelapse.86c9b0fdc8c68f7eb246.mp4",
     "static/media/roaming_spaceships_playthrough.mp4": "/game-portfolio/static/media/roaming_spaceships_playthrough.f6e97ae098b0940e9005.mp4",
@@ -21,18 +21,21 @@
     "static/media/clouds.png": "/game-portfolio/static/media/clouds.3d1832dee017b4d4014b.png",
     "static/media/film_portrait.JPG": "/game-portfolio/static/media/film_portrait.95ed2fde192243b131fc.JPG",
     "static/media/terrain_generator_material.png": "/game-portfolio/static/media/terrain_generator_material.41bf8cec8dfe05efcc69.png",
+    "static/media/coinmania.png": "/game-portfolio/static/media/coinmania.83a20feb410ff52de893.png",
     "static/media/selective_sdf_snap2.png": "/game-portfolio/static/media/selective_sdf_snap2.62e5ecdd49d91a6f79f0.png",
     "static/media/selective_sdf_snap1.png": "/game-portfolio/static/media/selective_sdf_snap1.e2d11f3c6697e0a8fb1e.png",
     "static/media/terrain_map.png": "/game-portfolio/static/media/terrain_map.f4733d06d1b8eea632bf.png",
     "static/media/sdf_preview.png": "/game-portfolio/static/media/sdf_preview.f28f797c5aaad913a884.png",
+    "static/media/tsignebis_taro.jpg": "/game-portfolio/static/media/tsignebis_taro.8c1e8556d7ba3ed5124e.jpg",
     "static/media/roaming_ships.png": "/game-portfolio/static/media/roaming_ships.d10f67caebccf29c4fe2.png",
+    "static/media/liderbet.png": "/game-portfolio/static/media/liderbet.ab2d9bdd855bd4e735c5.png",
     "index.html": "/game-portfolio/index.html",
-    "main.d6169541.css.map": "/game-portfolio/static/css/main.d6169541.css.map",
-    "main.d88294e3.js.map": "/game-portfolio/static/js/main.d88294e3.js.map",
+    "main.1cb30f73.css.map": "/game-portfolio/static/css/main.1cb30f73.css.map",
+    "main.f64d9137.js.map": "/game-portfolio/static/js/main.f64d9137.js.map",
     "529.a37ae4e5.chunk.js.map": "/game-portfolio/static/js/529.a37ae4e5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d6169541.css",
-    "static/js/main.d88294e3.js"
+    "static/css/main.1cb30f73.css",
+    "static/js/main.f64d9137.js"
   ]
 }
