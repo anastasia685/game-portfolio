@@ -25,6 +25,14 @@ const RoamingSpaceships = () => {
 				The demo features a main character navigating through an environment populated with
 				obstacles and enemy NPCs, with all behavior driven by AI systems rather than player input.
 			</p>
+			<p className={classes.externalLinks}>
+				This demonstration can be found{' '}
+				<a href={'/#/roaming-spaceships/demo'} target={'_blank'}>
+					here
+				</a>
+				, and the source code for the entire project (alongside this
+				portfolio website) <a href={'https://github.com/anastasia685/game-portfolio'} target={'_blank'}>here</a>.
+			</p>
 			<ul className={classes.listMain}>
 				<li>
 					<span>Core AI Systems:</span>
@@ -44,15 +52,6 @@ const RoamingSpaceships = () => {
 					</ul>
 				</li>
 			</ul>
-
-			<p>
-				This demonstration can be found{' '}
-				<a href={'/#/roaming-spaceships/demo'} target={'_blank'}>
-					here
-				</a>
-				, and the source code for the entire project (alongside this
-				portfolio website) <a href={'https://github.com/anastasia685/game-portfolio'} target={'_blank'}>here</a>.
-			</p>
 		</Container>
 	)
 }

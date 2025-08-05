@@ -2,6 +2,15 @@ import Container from '../../web-components/container/Container'
 import Timelapse from '../../assets/videos/fluidsim_timelapse.mp4'
 import Snap1 from '../../assets/images/fluidsim_snap1.png'
 import Snap2 from '../../assets/images/fluidsim_snap2.png'
+import Aid1 from '../../assets/images/fluidsim_aid1.png'
+import Aid2 from '../../assets/images/fluidsim_aid2.png'
+import Aid3 from '../../assets/images/fluidsim_aid3.png'
+import Aid4 from '../../assets/images/fluidsim_aid4.png'
+import Aid5 from '../../assets/images/fluidsim_aid5.png'
+import Aid6 from '../../assets/images/fluidsim_aid6.png'
+import Aid7 from '../../assets/images/fluidsim_aid7.png'
+import Aid8 from '../../assets/images/fluidsim_aid8.png'
+import Aid9 from '../../assets/images/fluidsim_aid9.png'
 
 import classes from '../ProjectScreen.module.scss'
 
@@ -29,6 +38,9 @@ const FluidSim = () => {
 				The focus was on created a fully dynamic, field-based simulation using Navier-Stokes equations
 				to model cloud flow, and using ray marching techniques to render them with realistic lighting and scattering.
 				An important feature was to have the simulation interact with the underlying procedurally generated fBm terrain via voxelized SDFs.
+			</p>
+			<p className={classes.externalLinks}>
+				The source code for the project can be found <a href={'https://github.com/anastasia685/VolumetricFluidSim'} target={'_blank'}>here</a>.
 			</p>
 			<h3>List of features:</h3>
 			<ul className={classes.listMain}>
@@ -110,8 +122,188 @@ const FluidSim = () => {
 					</ul>
 				</li>
 			</ul>
+			<h3 style={{marginTop: '2.5rem'}}>Development Process</h3>
+			<p>After experimenting with dynamic surface rendering in the previous project, I wanted to go even further
+				and explore physics-based simulations in computer graphics, which led me to incompressible fluid simulation
+				based on the Navier-Stokes equations.
+			</p>
 			<p>
-				The source code for the project can be found <a href={'https://github.com/anastasia685/VolumetricFluidSim'} target={'_blank'}>here</a>.
+				Obviously fluid sims are inherently compelling with their dynamic motion and turbulent swirls,
+				but more importantly, the process itself is described by a set of partial differential equations that
+				model real-world conservation laws, meaning same principles could be used to simulate other real-world
+				phenomena like heat transfer, energy diffusion, electromagnetic fields, and more. This is probably the
+				main reason why CFD (computer fluid dynamics) seemed like great introductory prompt to this large,
+				diverse field of computer simulation.
+			</p>
+			<p>
+				Before getting into implementation details, first obvious step was to make sense of the underlying
+				fundamental principles, starting with Navier-Stokes equations.
+			</p>
+			<p>
+				The first one closely resembles Newton’s second law of motion – the left side is essentially
+				<span className={classes.italic}> m*a </span>, mass replaced by density, since we’re solving this per particle
+				(mass/volume=density) and material derivative of the velocity could be broken down into partial
+				derivative over time – which is acceleration. Right side is essentially the net force acting on the particle.
+				Hence, <span className={classes.italic}>ma=F</span>.
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid1} alt={'formula 1'} style={{width: '35rem'}}/>
+			</div>
+			<p>
+				This insight didn’t make the equation any less intimidating however, so I actually decided to
+				start from the second one – incompressibility condition that states that the velocity
+				vector must be divergence-free.
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid2} alt={'formula 2'} style={{width: '11rem'}}/>
+			</div>
+			<p>
+				Essentially, due to different forces or conditions, the velocity field we’re trying to
+				model has divergence. Referencing Helmholtz-Hodge Decomposition Theorem, a field can be
+				represented as a sum of its divergence-free component and a gradient of a scalar field.
+				In our case, w is our velocity field during simulation, u is the divergence-free velocity
+				field we’re trying to get, and the third component is the pressure gradient.
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid3} alt={'formula 3'} style={{width: '24rem'}}/>
+			</div>
+			<p>
+				Applying divergence operator on both sides of the equation and discarding u since it’s
+				divergence-free by definition, we get a Poisson equation of pressure, which can
+				be solved by various numerical methods!
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid4} alt={'formula 4'} style={{width: '23rem'}}/>
+			</div>
+			<p>
+				Setting that aside for now, let’s get back to our incompressibility condition equation.
+				In essence, what we’re doing is taking a velocity vector <span className={classes.italic}>w</span>
+				we got as a result from our simulation steps and we’re projecting it onto a
+				divergence-free <span className={classes.italic}>u</span> field (not unlike dot
+				product that maps arbitrary vector to its component along another unit vector).
+				So, we can define a projection operator <span className={classes.bold}>P</span> that does exactly that.
+			</p>
+			<p>
+				We can now go back to our first equation (slightly rearranged, since we’re trying to solve
+				how our velocity field changes over time, i.e. partial derivative
+				of <span className={classes.italic}>u</span> over <span className={classes.italic}>t</span> ) and
+				apply this projection operator.
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid5} alt={'formula 5'} style={{width: '28rem'}}/>
+			</div>
+			<p>
+				Applying it on Helmholtz-Hodge decomposition also tells us that projection of pressure gradient is
+				zero and can be discarded, and since u is already divergence-free, applying projection to it or
+				its derivative yields the same result.
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid6} alt={'formula 6'} style={{width: '22rem'}}/>
+			</div>
+			<p>
+				With all of this in mind, we have greatly simplified the original definition,
+				on top of understanding physical or mathematical concepts behind it!
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid7} alt={'formula 7'} style={{width: '22rem'}}/>
+			</div>
+			<br/><br/><br/>
+			<p>
+				Once I gained some intuition as to how the system worked, implementation tasks became
+				a lot more straightforward. I set up some buffers for simulated fields (arranged data into
+				MAC grid to improve accuracy and continuity of differentials over neighboring cells) and
+				started applying forces on the right side of my new equation.
+			</p>
+			<p>For evolving velocity field over time, I used a common method called Semi-Lagrangian advection.
+				In general, Lagrangian methods simulate fluids as particles – describing a set of particles by their
+				properties like position, velocity, etc., while my grid-based approach would be labeled as
+				Eulerian – discretizing space into a grid and describing each position by the same properties.
+				With Semi-Lagrangian advection in our grid-based system, we treat velocity at a certain cell
+				as particle, backtrack along its vector, sample data there and treat that as a new value at our
+				current position. A straightforward approach that avoids complex calculations.
+			</p>
+			<p>
+				Force application is conceptually even simpler and just a matter of increasing/decreasing
+				velocity field. For my specific use, I decided to use Perlin noise to map out sections of
+				the grid where I would apply wind force. Next, I used layered Perlin noise again to generate
+				actual directions and magnitudes. Perlin noise was pre-calculated in a separate compute shader
+				during startup and backed into a texture (permutation table appropriately adjusted to make the
+				noise tileable at specific baked frequency). Same Perlin noise was later used for injecting
+				density sources (patches of mist/clouds near terrain surface) that would be “carried” along
+				the velocity field by density advection.
+			</p>
+			<p>
+				Additionally, to encourage preservation of tiny swirls in velocity field that would otherwise
+				get smoothed out by projection and boundary conditions, I implemented what’s called
+				vorticity confinement. Essentially, I calculated curl of the velocity field just
+				before projection and applied an additional force along it.
+			</p>
+			<p>
+				Finally, for projection step, as already mentioned I had to solve Poisson equation for pressure.
+				For simplicity’s sake, I decided an iterative solver like Jacobi method would suffice.
+				It was quite simple to implement and highly parallelizable by nature, fitting
+				perfectly within my compute pipeline.
+			</p>
+			<br/><br/>
+			<p>
+				Well, after all this setup, it was time to test it for the first time. I placed a small cube
+				of density in the center of my simulation grid, applied a uniform right-facing force and…
+			</p>
+			<p>Nothing happened.</p>
+			<p>
+				The cube would start moving to the right, but would slow down to a complete stop
+				at the right edge, and the density would slowly seep out completely due to boundary
+				conditions (density is not being “accumulated”, only moved around, so small movement
+				to the right would slowly “overwrite” density values with 0s).
+			</p>
+			<p>
+				After quite a bit of trial and error, I found out that it had nothing to do with
+				my compute shaders or simulation logic and everything with how I had posed the problem to begin with.
+			</p>
+			<p>
+				Applying uniform force everywhere meant that my velocity field had “no room” to reproject into a
+				divergence-free one. That’s the best way I can describe what was happening, along the illustrations below
+				that demonstrate velocity field state before and after projection.
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid8} alt={'test scenario 1'} style={{width: '30rem'}}/>
+			</div>
+			<p>
+				Once I instead applied a localized force over a small region (any placement
+				worked, but for demonstration purposes it was at the same place as the density blob), the
+				system started working as expected! The divergence caused by this initial surge was
+				distributed along the entire grid, creating classic swirling patterns seen in fluid motion.
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid9} alt={'test scenario 2'} style={{width: '30rem'}}/>
+			</div>
+			<br/><br/>
+			<p>
+				Briefly on boundary conditions – initially they were set up as free-slip against simulation
+				cube faces, meaning normal velocity against a wall would become zero, while tangential components
+				would be preserved. It worked out great and gave me the classic CFD look of fluid sliding along the
+				edges of the box, instead of just stopping or going through. However, after adding terrain into the
+				scene, I didn’t like how my simulated clouds had no regard for mountains and were just clipping
+				through them. To address this, I decided to compute a scene-wide SDF (signed distance field) of all
+				my solid objects that would act as obstacles for clouds (which was only terrain for now). This field
+				would act as a mask essentially – negative values would mean there was a solid geometry there, so
+				boundary conditions would be applied for that cell. With that, clouds were now sliding along the
+				ground and mountain peaks as well.
+			</p>
+			<p>
+				Speaking of terrain, like Perlin noise, I also generated its height map at startup via
+				compute shader. The algorithm I used for displacement was gradient-biased fractal Perlin noise.
+				Basically standard Perlin noise was applied in layers in fractal Brownian motion style,
+				but each octave’s contribution was also scaled according to the existing slope from previous
+				octaves. In practice, this meant that sharper slopes would preserve their features, without
+				smaller high-frequency bumps adding unrealistic noise back.
+			</p>
+			<p>
+				To wrap this up, I quickly implemented ray marching for volumetric rendering of my
+				simulated density field, evaluating both in- and out-scattering terms of transmittance.
+				Additionally, I borrowed a trick from deferred shading of rendering to g-buffers and
+				wrote to ambient occlusion map, to do screen-space ray marching later, for
+				crepuscular ray post-processing effect.
 			</p>
 		</Container>
 	)

@@ -30,6 +30,9 @@ const Sockets = () => {
 				then correct their simulation when server snapshots arrive by
 				replaying cached moves and accounting for acknowledged/missed inputs through bitmap validation.
 			</p>
+			<p className={classes.externalLinks}>
+				The source code for the project can be found <a href={'https://github.com/anastasia685/SFML_Sockets'} target={'_blank'}>here</a>.
+			</p>
 			<h3>List of features:</h3>
 			<ul className={classes.listMain}>
 				<li>
@@ -89,9 +92,6 @@ const Sockets = () => {
 					</ul>
 				</li>
 			</ul>
-			<p>
-				The source code for the project can be found <a href={'https://github.com/anastasia685/SFML_Sockets'} target={'_blank'}>here</a>.
-			</p>
 		</Container>
 	)
 }

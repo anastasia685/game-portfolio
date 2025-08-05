@@ -2,6 +2,12 @@ import Container from '../../web-components/container/Container'
 import Timelapse from '../../assets/videos/waves_timelapse.mp4'
 import Snap1 from '../../assets/images/waves_snap1.png'
 import Snap2 from '../../assets/images/waves_snap2.png'
+import Aid1 from '../../assets/images/waves_aid1.gif'
+import Aid2 from '../../assets/images/waves_aid2.gif'
+import Aid3 from '../../assets/images/waves_aid3.png'
+import Aid4 from '../../assets/images/waves_aid4.png'
+import Aid5 from '../../assets/images/waves_aid5.gif'
+import Aid6 from '../../assets/images/waves_aid6.png'
 
 import classes from '../ProjectScreen.module.scss'
 
@@ -22,6 +28,9 @@ const Dx11Demo = () => {
 				My first graphics programming project showcases a GPU-driven water surface with procedural displacement,
 				reflections, different light types, shadow mapping and a configurable environment including sky and fog.
 				Designed as an all-in-one demo, it aims to demonstrate core real-time graphics techniques in one simple scene.
+			</p>
+			<p className={classes.externalLinks}>
+				The source code for the project can be found <a href={'https://github.com/anastasia685/Waves'} target={'_blank'}>here</a>.
 			</p>
 			<h3>List of features:</h3>
 			<ul className={classes.listMain}>
@@ -52,7 +61,7 @@ const Dx11Demo = () => {
 						<li>
 							Support for all three major light types: directional, point, and spot.
 						</li>
-						<li>All include shadow mapping with PCF filtering.</li>
+						<li>All include shadow mapping with PCF filtering (cubemaps for pointlight shadows).</li>
 					</ul>
 				</li>
 				<li>
@@ -62,13 +71,86 @@ const Dx11Demo = () => {
 							Bloom: two-octave effect with downsampling and Gaussian blur kernel.
 						</li>
 						<li>
-							Fog: distance- and height-based attenuation using reconstructed world-space position.
+							Fog: distance- and height-based attenuation using reconstructed world-space position in screen-space.
 						</li>
 					</ul>
 				</li>
 			</ul>
+			<h3 style={{marginTop: '2.5rem'}}>Development Process</h3>
 			<p>
-				The source code for the project can be found <a href={'https://github.com/anastasia685/Waves'} target={'_blank'}>here</a>.
+				At the start of this project, I knew I wanted to render a scene centred around a dynamic
+				water surface. I was already aware of the concept of using sine waves to displace geometry,
+				so I tessellated my plane and started there, with some basic ripples.
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid1} alt={'ripples'} style={{width: '32rem'}}/>
+			</div>
+			<p>
+				The next step was making the surface actually look like water, meaning adding some reflections.
+				The simplest method I could think of was planar reflections (since my water surface was also
+				just a flat plane) that involves mirroring camera position and view vector across the plane,
+				rendering the scene from that new perspective into a texture and sampling it later during
+				shading stage. The process was essentially the same as standard shadow-mapping, I just
+				had to record colour data, instead of depth values and use view/projection matrices
+				to transform sampling point into reflected camera’s space.
+			</p>
+			<p>
+				Next was adding some proper waves, for which I set up a compute shader to calculate
+				displacement values. This way, wave resolution would be decoupled from tessellation
+				factor and actual underlying plane resolution, meaning I could keep my geometry
+				low-poly, but still benefit from higher quality normals in pixel shader.
+			</p>
+			<p>
+				I started out with low-frequency Gerstner waves and got a pretty solid result, but
+				I wanted a lot more detail and definition. Tweaking and adjusting Gerstner wave
+				parameters however was pretty difficult, needing re-adjustments almost every time one
+				of them changed, especially when layering them fBm-style.
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid2} alt={'gerstner'} style={{width: '32rem'}}/>
+			</div>
+			<p>
+				What I did instead is switch to exponential sine waves and ended up with this formula,
+				where <span className={classes.italic}>a</span>, <span className={classes.italic}>f</span>,
+				and <span className={classes.italic}>s</span> are amplitude, frequency, and speed
+				respectively, <span className={classes.italic}>t</span> is the elapsed time,
+				and <span className={classes.italic}>k</span> and <span className={classes.italic}>b</span> are
+				coefficients to control the height and sharpness of the exponential peak.
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid3} alt={'wave_formula'} style={{width: '14rem'}}/>
+			</div>
+			<p>
+				Here’s side-by-side comparison with basic sine function in blue and this new formula in red.
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid4} alt={'wave_graph'} style={{width: '42rem'}}/>
+			</div>
+			<p>
+				Obviously I needed more than just one wave, so I layered it in octaves just like with fractal
+				Brownian motion – increasing frequency after each iteration and diminishing amplitude. Here's an
+				early version of just a couple of waves, with normal calculations still clearly off, but nevertheless
+				a big step up from previous iterations.
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid5} alt={'waves_proto'} style={{width: '36rem'}}/>
+			</div>
+			<p>
+				One cool effect I also added is called domain warping. Essentially it’s shifting next wave’s
+				phase along the gradient of the previous one, creating an illusion of waves crashing into each other. With
+				corrected central-diff normals and some parameter adjusting, the next iteration was very close to desired
+				final result.
+			</p>
+			<div className={classes.imageContainer}>
+				<img src={Aid6} alt={'waves_adjusted'} style={{width: '42rem'}}/>
+			</div>
+			<p>
+				In terms of actual surface rendering, beyond standard Blinn-Phong lighting model, I also calculated
+				Schlick Fresnel factor to incorporate my pre-calculated planar reflections. To give the water
+				somewhat translucent look, I also calculated sub-surface scattering approximation based on light
+				and view vectors, as well as wave height. The results ended up looking pretty interesting,
+				especially with either screen-space height-attenuated fog that created patches of mist in between
+				the larger waves, or with sunset lighting and bloom post-processing effect.
 			</p>
 		</Container>
 	)

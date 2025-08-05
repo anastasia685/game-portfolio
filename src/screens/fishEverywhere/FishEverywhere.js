@@ -27,6 +27,9 @@ const FishEverywhere = () => {
 				which was a fun departure from pure programming.
 				I emphasized building modular systems to support collaboration with the art and design team.
 			</p>
+			<p className={classes.externalLinks}>
+				The source code for the project can be found <a href={'https://github.com/anastasia685/FishEverywhere'} target={'_blank'}>here</a>.
+			</p>
 			<h3>List of features:</h3>
 			<ul className={classes.listMain}>
 				<li>
@@ -88,9 +91,6 @@ const FishEverywhere = () => {
 					</ul>
 				</li>
 			</ul>
-			<p>
-				The source code for the project can be found <a href={'https://github.com/anastasia685/FishEverywhere'} target={'_blank'}>here</a>.
-			</p>
 		</Container>
 	)
 }

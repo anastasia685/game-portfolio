@@ -70,16 +70,33 @@
   > p {
     margin: 1rem 0;
 
-    &:last-of-type {
-      margin-top: 2.5rem;
+    &.externalLinks {
+      margin-bottom: 2.5rem;
       text-transform: uppercase;
       font-size: 1.05rem;
       color: #111;
     }
 
+    .italic {
+       font-style: italic;
+    }
+    .bold {
+      font-weight: bold;
+    }
+
     > a {
       font-style: italic;
       color: #575757;
+    }
+  }
+  .imageContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    > img {
+      height: auto;
+      max-width: 100%;
+      display: block;
     }
   }
 

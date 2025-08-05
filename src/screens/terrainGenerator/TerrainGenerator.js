@@ -35,7 +35,7 @@ const TerrainGenerator = () => {
 					<img src={TerrainRender} />
 				</div>
 			</div>
-			<p>
+			<p className={classes.externalLinks}>
 				Here’s a quick snapshot of the whole graph in Substance Designer and{' '}
 				<a
 					href={

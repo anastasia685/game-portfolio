@@ -1,5 +1,6 @@
 import Container from '../../web-components/container/Container'
 import Timelapse from '../../assets/videos/selective_sdf_timelapse.mp4'
+import Process from '../../assets/videos/selective_sdf_process_breakdown.mp4'
 import Snap1 from '../../assets/images/selective_sdf_snap1.png'
 import Snap2 from '../../assets/images/selective_sdf_snap2.png'
 
@@ -14,8 +15,9 @@ const SelectiveSDF = () => {
 					<video src={Timelapse} autoPlay={true} loop={true} muted={true}></video>
 				</div>
 				<div className={classes.imageColumn}>
-					<div><img src={Snap1} alt={'snapshot 1'}/></div>
-					<div><img src={Snap2} alt={'snapshot 2'}/></div>
+					{/*<div><img src={Snap1} alt={'snapshot 1'}/></div>
+					<div><img src={Snap2} alt={'snapshot 2'}/></div>*/}
+					<video src={Process} autoPlay={true} loop={true} muted={true}></video>
 				</div>
 			</div>
 			<p>
@@ -31,15 +33,15 @@ const SelectiveSDF = () => {
 				where they provide meaningful visual contribution, the system seeks to
 				maintain the benefits of both techniques while mitigating their respective drawbacks.
 				It is built using DirectX 12 and DXR, with sphere tracing used for evaluating SDFs.
-				Development process is currently focused on exploring custom acceleration structures to
-				quickly narrow down the blend zone and relevant objects in the vicinity,
-				and improve or even replace sphere tracing.
+				Development process is currently focused on exploring multiple approaches to
+				SDF rendering, their associated data and pipeline structures, and how well they adapt to
+				blending tasks specifically.
 			</p>
 			<p>
 				This work is currently in progress as part of my master's degree program,
 				with ongoing investigation into the technical feasibility and performance characteristics of the hybrid approach.
 			</p>
-			<p>
+			<p className={classes.externalLinks}>
 				The source code for the project can be found <a href={'https://github.com/anastasia685/SelectiveSDF'} target={'_blank'}>here</a>.
 			</p>
 		</Container>
