@@ -39,6 +39,7 @@ const Home = () => {
 						which eventually led me to realize that video games
 						are the perfect intersection of all these passions -
 						combining storytelling, visual design, and technical challenges.
+						So I'm very excited for any opportunity to explore this field in greater detail.
 					</p>
 					<div>
 						<a href={'https://github.com/anastasia685'} target={'_blank'}><img src={GithubIcon}/></a>
@@ -50,7 +51,7 @@ const Home = () => {
 			<section className={classes.projectsContainer}>
 				<Link to={'/selective-sdf'}>
 					<Card
-						title={'Selective SDF: WIP'}
+						title={'Selective SDF'}
 						image={SDFImage}
 						description={
 							'A hybrid SDF-polygon rendering pipeline for selectively applying signed distance-based effects - master\'s thesis research.'
@@ -61,7 +62,7 @@ const Home = () => {
 							onClick={(e) => e.stopPropagation()}
 							target={'_blank'}
 						>
-							Source Page
+							Source
 						</a>
 					</Card>
 				</Link>
@@ -78,7 +79,7 @@ const Home = () => {
 							onClick={(e) => e.stopPropagation()}
 							target={'_blank'}
 						>
-							Source Page
+							Source
 						</a>
 					</Card>
 				</Link>
@@ -96,7 +97,7 @@ const Home = () => {
 							onClick={(e) => e.stopPropagation()}
 							target={'_blank'}
 						>
-							Source Page
+							Source
 						</a>
 					</Card>
 				</Link>
@@ -113,7 +114,7 @@ const Home = () => {
 							onClick={(e) => e.stopPropagation()}
 							target={'_blank'}
 						>
-							Source Page
+							Source
 						</a>
 					</Card>
 				</Link>
@@ -130,7 +131,7 @@ const Home = () => {
 							onClick={(e) => e.stopPropagation()}
 							target={'_blank'}
 						>
-							Source Page
+							Source
 						</a>
 					</Card>
 				</Link>
@@ -146,14 +147,14 @@ const Home = () => {
 							to={'/roaming-spaceships/demo'}
 							onClick={(e) => e.stopPropagation()}
 						>
-							Demonstration Page
+							Demonstration
 						</Link>
 						<a
 							href={'https://github.com/anastasia685/game-portfolio'}
 							onClick={(e) => e.stopPropagation()}
 							target={'_blank'}
 						>
-							Source Page
+							Source
 						</a>
 					</Card>
 				</Link>

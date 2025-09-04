@@ -45,6 +45,23 @@
         flex-direction: row;
       }
     }
+
+    .imageRow {
+      display: flex;
+      flex-direction: row;
+
+      > div {
+        width: 50%;
+      }
+
+      @media (max-width: 670px) {
+        flex-direction: column;
+
+        > div{
+          width: 100%;
+        }
+      }
+    }
   }
 
   > h1, h3 {
