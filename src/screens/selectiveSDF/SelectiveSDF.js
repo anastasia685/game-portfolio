@@ -53,8 +53,10 @@ const SelectiveSDF = () => {
 				fine detail within blend zones stayed modest/acceptable by design.
 			</p>
 			<p className={classes.externalLinks}>
-				The source code for the project can be found <a href={'https://github.com/anastasia685/SelectiveSDF'}
-																				target={'_blank'}>here</a>.
+				The complete dissertation can be read <a href={'https://anastasia685.github.io/game-portfolio/Dissertation.pdf'}
+																	  target={'_blank'}>here</a>,
+				and <a href={'https://github.com/anastasia685/SelectiveSDF'}
+						 target={'_blank'}>here's</a> source code for the project.
 			</p>
 			<h3>List of features:</h3>
 			<ul className={classes.listMain}>

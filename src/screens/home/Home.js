@@ -64,6 +64,13 @@ const Home = () => {
 						>
 							Source
 						</a>
+						<a
+							href={'https://anastasia685.github.io/game-portfolio/Dissertation.pdf'}
+							onClick={(e) => e.stopPropagation()}
+							target={'_blank'}
+						>
+							Dissertation
+						</a>
 					</Card>
 				</Link>
 				<Link to={'/volumetric-fluid-sim'}>
