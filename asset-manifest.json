@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/game-portfolio/static/css/main.c897a31e.css",
-    "main.js": "/game-portfolio/static/js/main.725755f3.js",
+    "main.js": "/game-portfolio/static/js/main.5eb1b8a6.js",
     "static/js/529.a37ae4e5.chunk.js": "/game-portfolio/static/js/529.a37ae4e5.chunk.js",
     "static/media/fluidsim_timelapse.mp4": "/game-portfolio/static/media/fluidsim_timelapse.86c9b0fdc8c68f7eb246.mp4",
     "static/media/roaming_spaceships_playthrough.mp4": "/game-portfolio/static/media/roaming_spaceships_playthrough.f6e97ae098b0940e9005.mp4",
@@ -48,11 +48,11 @@
     "static/media/waves_aid3.png": "/game-portfolio/static/media/waves_aid3.dfec69bbc2ebf8a48c75.png",
     "index.html": "/game-portfolio/index.html",
     "main.c897a31e.css.map": "/game-portfolio/static/css/main.c897a31e.css.map",
-    "main.725755f3.js.map": "/game-portfolio/static/js/main.725755f3.js.map",
+    "main.5eb1b8a6.js.map": "/game-portfolio/static/js/main.5eb1b8a6.js.map",
     "529.a37ae4e5.chunk.js.map": "/game-portfolio/static/js/529.a37ae4e5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c897a31e.css",
-    "static/js/main.725755f3.js"
+    "static/js/main.5eb1b8a6.js"
   ]
 }
